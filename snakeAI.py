@@ -13,26 +13,26 @@ blue = (50, 153, 213)
 pink = (255, 176, 176)
 purple = (164, 2, 172)
 
-dis_width = 600
-dis_height = 400
+dis_width = 800
+dis_height =500
 
 dis = pygame.display.set_mode((dis_width, dis_height))
 pygame.display.set_caption('Snake AI')
 
 clock = pygame.time.Clock()
-
+    
 snake_block = 10
-snake_speed = 10
+snake_speed = 20
 
 ok = False
 
 font_style = pygame.font.SysFont("bahnschrift", 25)
-score_font = pygame.font.SysFont("comicsansms", 35)
-
+score_font = pygame.font.SysFont("bahnschrift", 20)
+# comicsansms
 
 def getScore(score):
     value = score_font.render("score: " + str(score), True, yellow)
-    dis.blit(value, [0, 0])
+    dis.blit(value, [10, 0])
 
 
 def snake(snake_block, snake_list):
@@ -43,6 +43,7 @@ def snake(snake_block, snake_list):
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
     dis.blit(mesg, [dis_width / 6, dis_height / 3])
+
 
 def get_min_index(a, b, c):
    t = min(a, b, c)
@@ -61,7 +62,6 @@ def isDeath(x, y, temp_list):
         if i == temp:
             return True
     return False
-
 
 def getDistance(x1,y1, x2, y2):
     return ((x2-x1)**2 + (y2-y1)**2)
@@ -113,18 +113,19 @@ def gameLoop():
             d2 = not isDeath(x1, y1 + snake_block, snake_List)
             d3 = not isDeath(x1, y1 - snake_block, snake_List)
 
+
             if d1 and d2 and d3:
                 index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody),
                                       getDistance(x1, y1 + snake_block, foodx, foody),
                                       getDistance(x1, y1 - snake_block, foodx, foody))
             if d1 and d2 and not d3:
                 index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody),
-                                      getDistance(x1, y1 + snake_block, foodx, foody), 9999999)
+                                      getDistance(x1, y1 + snake_block, foodx, foody), 999999)
             if d1 and (not d2) and d3:
-                index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody), 9999999,
+                index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody), 999999,
                                       getDistance(x1, y1 - snake_block, foodx, foody))
             if (not d1) and d2 and d3:
-                index = get_min_index(9999999, getDistance(x1, y1 + snake_block, foodx, foody),
+                index = get_min_index(999999, getDistance(x1, y1 + snake_block, foodx, foody),
                                       getDistance(x1, y1 - snake_block, foodx, foody))
             if d1 and (not d2) and (not d3):
                 index = 1
@@ -155,12 +156,12 @@ def gameLoop():
                                       getDistance(x1, y1 - snake_block, foodx, foody))
             if d1 and d2 and not d3:
                 index = get_min_index(getDistance(x1 - snake_block, y1, foodx, foody),
-                                      getDistance(x1, y1 + snake_block, foodx, foody), 9999999)
+                                      getDistance(x1, y1 + snake_block, foodx, foody), 999999)
             if d1 and (not d2) and d3:
-                index = get_min_index(getDistance(x1 - snake_block, y1, foodx, foody), 9999999,
+                index = get_min_index(getDistance(x1 - snake_block, y1, foodx, foody), 999999,
                                       getDistance(x1, y1 - snake_block, foodx, foody))
             if (not d1) and d2 and d3:
-                index = get_min_index(9999999, getDistance(x1, y1 + snake_block, foodx, foody),
+                index = get_min_index(999999, getDistance(x1, y1 + snake_block, foodx, foody),
                                       getDistance(x1, y1 - snake_block, foodx, foody))
             if d1 and (not d2) and (not d3):
                 index = 1
@@ -191,12 +192,12 @@ def gameLoop():
                                       getDistance(x1, y1 + snake_block, foodx, foody))
             if d1 and d2 and not d3:
                 index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody),
-                                      getDistance(x1 - snake_block, y1, foodx, foody), 9999999)
+                                      getDistance(x1 - snake_block, y1, foodx, foody), 999999)
             if d1 and (not d2) and d3:
-                index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody), 9999999,
+                index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody), 999999,
                                       getDistance(x1, y1 + snake_block, foodx, foody))
             if (not d1) and d2 and d3:
-                index = get_min_index(9999999, getDistance(x1 - snake_block, y1, foodx, foody),
+                index = get_min_index(999999, getDistance(x1 - snake_block, y1, foodx, foody),
                                       getDistance(x1, y1 + snake_block, foodx, foody))
             if d1 and (not d2) and (not d3):
                 index = 1
@@ -227,12 +228,12 @@ def gameLoop():
                                       getDistance(x1, y1 - snake_block, foodx, foody))
             if d1 and d2 and not d3:
                 index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody),
-                                      getDistance(x1 - snake_block, y1, foodx, foody), 9999999)
+                                      getDistance(x1 - snake_block, y1, foodx, foody), 999999)
             if d1 and (not d2) and d3:
-                index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody), 9999999,
+                index = get_min_index(getDistance(x1 + snake_block, y1, foodx, foody), 999999,
                                       getDistance(x1, y1 - snake_block, foodx, foody))
             if (not d1) and d2 and d3:
-                index = get_min_index(9999999, getDistance(x1 - snake_block, y1, foodx, foody),
+                index = get_min_index(999999, getDistance(x1 - snake_block, y1, foodx, foody),
                                       getDistance(x1, y1 - snake_block, foodx, foody))
             if d1 and (not d2) and (not d3):
                 index = 1
@@ -278,7 +279,6 @@ def gameLoop():
             Length_of_snake += 1
 
         clock.tick(snake_speed)
-
     pygame.quit()
     quit()
 
