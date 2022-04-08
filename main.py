@@ -12,8 +12,8 @@ blue = (50, 153, 213)
 pink = (255, 176, 176)
 purple = (164, 2, 172)
 
-dis_width = 600
-dis_height = 400
+dis_width = 800
+dis_height = 500
 
 dis = pygame.display.set_mode((dis_width, dis_height))
 pygame.display.set_caption('Snake Game')
@@ -24,7 +24,7 @@ snake_block = 10
 snake_speed = 10
 
 font_style = pygame.font.SysFont("bahnschrift", 25)
-score_font = pygame.font.SysFont("comicsansms", 35)
+score_font = pygame.font.SysFont("bahnschrift", 35)
 
 
 def Your_score(score):
