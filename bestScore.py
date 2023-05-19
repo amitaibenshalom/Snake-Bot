@@ -17,7 +17,7 @@ dis_width = 800
 dis_height = 500
 
 dis = pygame.display.set_mode((dis_width, dis_height))
-pygame.display.set_caption('Snake AI Best Score')
+pygame.display.set_caption('Snake Bot Best Score')
 
 clock = pygame.time.Clock()
 
